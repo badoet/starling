@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+script_dir=$(dirname "$0")
+root_dir=$(realpath "${script_dir}/..")
+set -xeuo pipefail
+
+# npx prettier --ignore-path "${root_dir}/.prettierignore" --check . '!packages/**/*'
+# npx eslint --ignore-path "${root_dir}/.eslintignore" --ignore-pattern 'packages/' .

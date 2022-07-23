@@ -1,0 +1,92 @@
+{
+  "npmScope": "starterapp",
+
+  "affected": {
+    "defaultBase": "develop"
+  },
+
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "nx.json": "*",
+    "tsconfig.json": "*",
+    "tsconfig.base.json": "*",
+    "tsconfig.next.json": "*",
+    "tsconfig.build.json": "*"
+  },
+
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "dev",
+          "start",
+          "lint",
+          "test"
+        ]
+      }
+    }
+  },
+
+  "namedInputs": {
+    "prettier": [
+      "{workspaceRoot}/.prettierrc.js"
+    ],
+    "eslint": [
+      "{workspaceRoot}/.eslintrc.js",
+      "{projectRoot}/.eslintrc.js",
+      "{projectRoot}/tsconfig.eslint.json"
+    ],
+    "jest": [
+      "{workspaceRoot}/jest.config.js",
+      "{projectRoot}/jest.config.js"
+    ],
+    "default": [
+      "{projectRoot}/**/*"
+    ],
+    "prod": [
+      "!{projectRoot}/**/*.spec.ts",
+      "!{projectRoot}/**/*.spec.tsx"
+    ],
+    "dist": [
+      "{projectRoot}/dist"
+    ]
+  },
+
+  "targetDefaults": {
+
+    "build": {
+      "inputs": ["prod", "^prod"],
+      "outputs": ["dist"],
+      "dependsOn": ["^build"]
+    },
+
+    "dev": {
+      "inputs": ["default", "^prod"],
+      "outputs": [],
+      "dependsOn": ["^build"]
+    },
+
+    "start": {
+      "inputs": ["dist"],
+      "outputs": [],
+      "dependsOn": ["build"]
+    },
+
+    "lint": {
+      "inputs": ["prettier", "eslint", "default"],
+      "outputs": [],
+      "dependsOn": ["^build"]
+    },
+
+    "test": {
+      "inputs": ["jest", "default", "^prod"],
+      "outputs": ["{projectRoot}/coverage"],
+      "dependsOn": ["^build"]
+    }
+  }
+}

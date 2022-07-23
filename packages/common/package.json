@@ -1,0 +1,15 @@
+{
+  "name": "@starterapp/common",
+  "version": "0.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "bootstrap": "../../scripts/bootstrap",
+    "audit": "../../scripts/audit",
+    "lint": "../../scripts/lint",
+    "test": "../../scripts/test",
+    "test-cov": "../../scripts/test-cov",
+    "prebuild": "rimraf dist",
+    "build": "tsc"
+  }
+}

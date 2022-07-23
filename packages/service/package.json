@@ -1,0 +1,19 @@
+{
+  "name": "@starterapp/service",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@starterapp/common": "../common"
+  },
+  "scripts": {
+    "bootstrap": "../../scripts/bootstrap",
+    "audit": "../../scripts/audit",
+    "lint": "../../scripts/lint",
+    "test": "../../scripts/test",
+    "test-cov": "../../scripts/test-cov",
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "dev": "nest start --watch",
+    "start": "nest start"
+  }
+}

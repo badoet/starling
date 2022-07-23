@@ -1,0 +1,17 @@
+# Node.js
+node_modules/
+npm-debug.log*
+.nvmrc
+
+# Build
+dist/
+
+# Test
+coverage/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
