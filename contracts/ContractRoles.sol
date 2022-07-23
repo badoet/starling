@@ -6,8 +6,6 @@ import "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol";
 
 contract ContractRoles is ContextUpgradeable, AccessControlUpgradeable {
     bytes32 public constant ROLE_ADMIN = keccak256("ADM");
-    bytes32 public constant ROLE_MANAGER = keccak256("MGR");
-    bytes32 public constant ROLE_GOVERNOR = keccak256("GOV");
     bytes32 public constant ROLE_OPERATOR = keccak256("OPS");
 
     /**
@@ -19,19 +17,18 @@ contract ContractRoles is ContextUpgradeable, AccessControlUpgradeable {
 
         // Need to setup the role admin first before granting role
         _setRoleAdmin(ROLE_ADMIN, ROLE_ADMIN);
-        _setRoleAdmin(ROLE_MANAGER, ROLE_ADMIN);
-        _setRoleAdmin(ROLE_GOVERNOR, ROLE_ADMIN);
         _setRoleAdmin(ROLE_OPERATOR, ROLE_ADMIN);
 
-        // secondary role admin post role_admin self revoked
-        _setRoleAdmin(ROLE_GOVERNOR, ROLE_GOVERNOR);
-        _setRoleAdmin(ROLE_MANAGER, ROLE_MANAGER);
-        _setRoleAdmin(ROLE_OPERATOR, ROLE_GOVERNOR);
-
         _grantRole(ROLE_ADMIN, _msgSender());
-        _grantRole(ROLE_MANAGER, _msgSender());
-        _grantRole(ROLE_GOVERNOR, _msgSender());
         _grantRole(ROLE_OPERATOR, _msgSender());
+    }
+
+    function isAdmin(address _addr) public view returns (bool) {
+        return hasRole(ROLE_ADMIN, _addr);
+    }
+
+    function isOperator(address _addr) public view returns (bool) {
+        return hasRole(ROLE_OPERATOR, _addr);
     }
 
     function getBalance() public view returns (uint256) {

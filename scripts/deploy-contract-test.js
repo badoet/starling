@@ -10,6 +10,7 @@ const { ethers, upgrades } = require('hardhat')
 const { WEI } = require('../helper')
 
 const tokenAddr = process.env.TOKEN_ADDR
+const contractRolesAddr = process.env.CONTRACT_ROLES_ADDR
 
 async function main() {
   if (!tokenAddr) return
@@ -25,6 +26,7 @@ async function main() {
   const Contract = await ethers.getContractFactory('ContractTest')
   const contract = await upgrades.deployProxy(Contract, [
     tokenAddr,
+    contractRolesAddr,
   ])
   await contract.deployed()
 
