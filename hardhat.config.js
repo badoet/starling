@@ -7,7 +7,6 @@ require('@nomiclabs/hardhat-ethers')
 require('hardhat-deploy')
 require('hardhat-contract-sizer')
 require('@openzeppelin/hardhat-upgrades')
-require('@nomiclabs/hardhat-etherscan')
 
 require('dotenv').config()
 
@@ -61,8 +60,8 @@ const config = {
       accounts: account.Localnet ? [account.Localnet] : mnemonicAccounts,
     },
     testnet: {
-      url: 'https://api.s0.b.hmny.io',
-      chainId: 1666700000,
+      url: 'https://rpc-mumbai.maticvigil.com/',
+      chainId: 80001,
       accounts: account.Testnet ? [account.Testnet] : mnemonicAccounts,
     },
     mainnet: {
@@ -71,11 +70,6 @@ const config = {
       accounts: account.Mainnet ? [account.Mainnet] : mnemonicAccounts,
       live: true,
       saveDeployments: true,
-    },
-  },
-  etherscan: {
-    apiKey: {
-      harmony: 'your API key',
     },
   },
   namedAccounts: {

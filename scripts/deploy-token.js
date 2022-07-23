@@ -14,11 +14,11 @@ async function main() {
 
   if (deployerBalance === '0') return // deployment will fail
 
-  const ArbToken = await ethers.getContractFactory('ArbToken')
-  const token = await ArbToken.deploy()
+  const TestToken = await ethers.getContractFactory('TestToken')
+  const token = await TestToken.deploy()
   await token.deployed()
 
-  console.log('ARB Test Token deployed to:', token.address)
+  console.log('TestToken deployed to:', token.address)
 }
 
 // We recommend this pattern to be able to use async/await everywhere

@@ -15,3 +15,11 @@ coverage/
 
 # Environment
 .env
+
+#Hardhat files
+cache
+artifacts
+.nvmrc
+.openzeppelin
+dist
+build

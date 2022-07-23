@@ -159,3 +159,20 @@ npx nx audit service
 npx nx audit portal
 # and so on...
 ```
+
+create .env file
+```
+LOCALNET_PRIVATE_KEY='<private key>'
+TESTNET_PRIVATE_KEY='<private key>'
+MAINNET_PRIVATE_KEY='<private key>'
+
+# Mnemonic test seed words
+MNEMONIC='test test test test test test test test test test test junk'
+
+# TESTNET
+TOKEN_ADDR=
+CONTRACT_ADDR=
+```
+
+to deploy token:
+run  npx hardhat run scripts/deploy-token.js --network testnet
