@@ -22,17 +22,12 @@ async function main() {
 
   if (deployerBalance === '0') return // deployment will fail
 
-  const Contract = await ethers.getContractFactory('Contract')
-  const contract = await upgrades.deployProxy(
-    Contract,
-    [
-      tokenAddr,
-    ]
-  )
+  const Contract = await ethers.getContractFactory('ContractRoles')
+  const contract = await upgrades.deployProxy(Contract)
   await contract.deployed()
 
-  console.log('contract deployed to:', contract.address)
-  console.log('contract details:', contract)
+  console.log('ContractRoles deployed to:', contract.address)
+  console.log('ContractRoles details:', contract)
 }
 
 // We recommend this pattern to be able to use async/await everywhere

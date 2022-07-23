@@ -171,7 +171,7 @@ MNEMONIC='test test test test test test test test test test test junk'
 
 # TESTNET
 TOKEN_ADDR=
-CONTRACT_ADDR=
+CONTRACT_ROLES_ADDR=
 ```
 
 to deploy token:
