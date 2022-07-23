@@ -60,7 +60,7 @@ const config = {
       accounts: account.Localnet ? [account.Localnet] : mnemonicAccounts,
     },
     testnet: {
-      url: 'https://rpc-mumbai.maticvigil.com/',
+      url: 'https://rpc-mumbai.maticvigil.com/v1/a1af5b4cebcb965833e713b2595b49a1e24cc177',
       chainId: 80001,
       accounts: account.Testnet ? [account.Testnet] : mnemonicAccounts,
     },
