@@ -5,18 +5,17 @@ import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol";
 
-contract Contract is ContextUpgradeable, AccessControlUpgradeable {
+contract ContractTest is ContextUpgradeable, AccessControlUpgradeable {
     bytes32 public constant ROLE_ADMIN = keccak256("ADM");
     bytes32 public constant ROLE_MANAGER = keccak256("MGR");
     bytes32 public constant ROLE_GOVERNOR = keccak256("GOV");
     bytes32 public constant ROLE_OPERATOR = keccak256("OPS");
 
-    bytes32 public constant PROJECT_ROLE_ADMIN = keccak256("PRJ_ADM");
-    bytes32 public constant PROJECT_ROLE_MANAGER = keccak256("PRJ_MGR");
-
     bool public isActive;
 
     IERC20Upgradeable public token;
+
+    string public name;
 
     /**
       * @dev Grants all roles to the
@@ -49,6 +48,11 @@ contract Contract is ContextUpgradeable, AccessControlUpgradeable {
     function setActive(bool _active) public {
         require(hasRole(ROLE_ADMIN, _msgSender()), "401");
         isActive = _active;
+    }
+
+    function setName(string memory _name) public {
+        require(hasRole(ROLE_ADMIN, _msgSender()), "401");
+        name = _name;
     }
 
     function setToken(address _token) public {

@@ -6,7 +6,7 @@
 require('dotenv').config({ path: '../.env' })
 const { ethers, upgrades } = require('hardhat')
 
-const contractAddr = process.env.CONTRACT_ADDR
+const contractAddr = process.env.CONTRACT_TEST_ADDR
 
 async function main() {
   const [deployer] = await ethers.getSigners()
@@ -17,7 +17,7 @@ async function main() {
 
   if (deployerBalance === '0') return // deployment will fail
 
-  const Contract = await ethers.getContractFactory('Contract')
+  const Contract = await ethers.getContractFactory('ContractTest')
   const upgradedContract = await upgrades.upgradeProxy(
     contractAddr,
     Contract,
